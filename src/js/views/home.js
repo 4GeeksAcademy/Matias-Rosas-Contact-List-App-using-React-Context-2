@@ -38,7 +38,7 @@ export const Home = () => {
               </div>
             </div>
             <div className="col-md-2 d-flex align-items-center justify-content-center">
-              <button className="btn btn-link" onClick={()=> navigate("/edit/41")}><i className="fas fa-edit"></i></button>
+              <button className="btn btn-link" onClick={()=> navigate(`/edit/${contact.id}`)}><i className="fas fa-edit"></i></button>
               <button className="btn btn-link" onClick={()=>{ actions.deleteContact(contact.id)}}><i className="fas fa-trash"></i></button>
             </div>
           </div>

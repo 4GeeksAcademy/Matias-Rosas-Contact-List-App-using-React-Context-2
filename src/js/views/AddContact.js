@@ -11,7 +11,7 @@ export const AddContact = () => {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
-   
+      
 
 
     return (
@@ -35,7 +35,7 @@ export const AddContact = () => {
               <label htmlFor="address" className="form-label">Address</label>
               <input type="text" className="form-control" id="address" placeholder="Enter address" value={address} onChange={(e) => setAddress(e.target.value)} />
             </div>
-            {/* {error !== "" ? <p className="text-danger">{error}</p> : ""} */}
+            {error !== "" ? <p className="text-danger">{store.error}</p> : ""}
             <button type="button" className="btn btn-primary w-100" onClick={() => {actions.createContact(name, email, phone, address);setName("")
                   setEmail("");
                   setPhone("");

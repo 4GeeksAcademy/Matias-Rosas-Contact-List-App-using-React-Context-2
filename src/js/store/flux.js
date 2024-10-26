@@ -110,10 +110,30 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .catch(error => console.log(error));
             },
-
-            // updateContact: (event) => {
-            //     setStore({contact: {..}})
-            // }
+            updateContact: (updatedContact) => {
+              fetch(`https://playground.4geeks.com/contact/agendas/MatiRosas31/contacts/${updatedContact.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updatedContact)
+            })
+            .then(resp => {
+                if (resp.ok) {
+                    console.log("Contacto actualizado");
+                    // Actualizar el contacto en el store
+                    const updatedContacts = getStore().contacts.map(contact => 
+                        contact.id === updatedContact.id ? updatedContact : contact
+                    );
+                    setStore({ contacts: updatedContacts, contact: updatedContact });
+                } else {
+                    console.log("Error al actualizar el contacto");
+                }
+                return resp.json();
+            })
+            .catch(error => console.log("Error en la solicitud de actualización:", error));
+            }
+           
         }
     };
 };
